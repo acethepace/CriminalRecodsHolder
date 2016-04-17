@@ -1,12 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutX="182.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome!" />
+      <TabPane layoutX="7.0" layoutY="114.0" prefHeight="486.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="114.0">
+        <tabs>
+          <Tab text="Report a Crime">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox layoutX="62.0" layoutY="64.0" prefHeight="424.0" prefWidth="800.0" AnchorPane.bottomAnchor="29.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <VBox alignment="TOP_RIGHT" prefHeight="453.0" prefWidth="296.0" spacing="30.0">
+                                 <children>
+                                    <Label text="Date" textAlignment="RIGHT">
+                                       <VBox.margin>
+                                          <Insets top="30.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label text="Location of Crime" textAlignment="RIGHT" />
+                                    <Label text="Crime Category" textAlignment="RIGHT" />
+                                    <Label text="Description of Crime" textAlignment="RIGHT" />
+                                    <Label text="Description of Suspect" textAlignment="RIGHT">
+                                       <VBox.margin>
+                                          <Insets top="30.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label text="Additional Information" textAlignment="RIGHT">
+                                       <VBox.margin>
+                                          <Insets top="30.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="453.0" prefWidth="286.0" spacing="20.0">
+                                 <children>
+                                    <DatePicker promptText="Date of crime">
+                                       <VBox.margin>
+                                          <Insets top="26.0" />
+                                       </VBox.margin>
+                                    </DatePicker>
+                                    <TextField cacheHint="QUALITY" promptText="Okhla, Nehru Place, etc" />
+                                    <TextField promptText="Murder, Dacoity, Rape, rtc" />
+                                    <TextArea prefHeight="56.0" prefWidth="286.0" promptText="Full description" />
+                                    <TextArea prefHeight="54.0" prefWidth="286.0" promptText="(If applicable)" />
+                                    <TextArea prefHeight="55.0" prefWidth="286.0" promptText="(If applicable)" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <Button defaultButton="true" layoutX="384.0" layoutY="427.0" mnemonicParsing="false" text="Submit Crime" />
+                        <Button cancelButton="true" layoutX="505.0" layoutY="427.0" mnemonicParsing="false" text="Cancel" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Criminal Records">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Separator layoutY="32.0" prefWidth="200.0" />
+                        <Label layoutX="20.0" layoutY="14.0" text="Search Criminals" />
+                        <ScrollPane layoutY="34.0" prefHeight="200.0" prefWidth="800.0">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="781.0" />
+                          </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <ImageView fitHeight="45.0" fitWidth="200.0" layoutX="20.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/DBMS/iiitd-logo.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="98.0" fitWidth="193.0" layoutX="382.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/DBMS/appicon.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
