@@ -7,7 +7,8 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+
    <children>
       <TabPane layoutX="7.0" layoutY="114.0" prefHeight="486.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="114.0">
         <tabs>
@@ -68,17 +69,123 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Separator layoutY="32.0" prefWidth="200.0" />
-                        <Label layoutX="20.0" layoutY="14.0" text="Search Criminals" />
+                        <Label layoutX="20.0" layoutY="14.0" text="Add a new Criminals" />
                         <ScrollPane layoutY="34.0" prefHeight="200.0" prefWidth="800.0">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="781.0" />
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="241.0" prefWidth="781.0">
+                                 <children>
+                                    <HBox layoutX="210.0" layoutY="54.0" prefHeight="201.0" prefWidth="781.0" AnchorPane.bottomAnchor="168.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <VBox alignment="TOP_RIGHT" prefHeight="369.0" prefWidth="289.0" spacing="30.0">
+                                             <padding>
+                                                <Insets top="30.0" />
+                                             </padding>
+                                             <children>
+                                                <Label text="Name" />
+                                                <Label text="Crime ID" />
+                                                <Label text="Police Department" />
+                                                <Label text="Status" />
+                                                <Label />
+                                             </children>
+                                          </VBox>
+                                          <VBox prefHeight="369.0" prefWidth="289.0" spacing="20.0">
+                                             <padding>
+                                                <Insets left="30.0" top="27.0" />
+                                             </padding>
+                                             <children>
+                                                <TextField />
+                                                <TextField />
+                                                <TextField />
+                                                <ComboBox prefWidth="150.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <Button layoutX="314.0" layoutY="215.0" mnemonicParsing="false" text="Add Criminal" />
+                                 </children></AnchorPane>
                           </content>
                         </ScrollPane>
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
+            <Tab text="Query Crimes">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane layoutX="-7.0" layoutY="14.0" prefHeight="453.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="465.0" prefWidth="794.0">
+                                 <children>
+                                    <VBox prefHeight="453.0" prefWidth="800.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="418.0" spacing="30.0">
+                                             <children>
+                                                <RadioButton mnemonicParsing="false" text="Area" />
+                                                <ComboBox disable="true" prefWidth="150.0" promptText="Select area">
+                                                   <HBox.margin>
+                                                      <Insets left="45.0" />
+                                                   </HBox.margin>
+                                                </ComboBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets left="30.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="418.0" spacing="30.0">
+                                             <children>
+                                                <RadioButton mnemonicParsing="false" text="Crime Type" />
+                                                <ComboBox disable="true" prefWidth="150.0" promptText="Select crime" />
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets left="30.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="418.0" spacing="30.0">
+                                             <children>
+                                                <RadioButton mnemonicParsing="false" text="Criminal" />
+                                                <ComboBox disable="true" prefWidth="150.0" promptText="Select criminal">
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </HBox.margin>
+                                                </ComboBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets left="30.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="418.0" spacing="30.0">
+                                             <children>
+                                                <RadioButton mnemonicParsing="false" text="Criminal Status">
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </RadioButton>
+                                                <ComboBox disable="true" prefWidth="150.0" promptText="Select criminal">
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </HBox.margin>
+                                                </ComboBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets left="30.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <Button mnemonicParsing="false" text="Button">
+                                             <VBox.margin>
+                                                <Insets left="400.0" />
+                                             </VBox.margin>
+                                          </Button>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
         </tabs>
       </TabPane>
       <ImageView fitHeight="45.0" fitWidth="200.0" layoutX="20.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">

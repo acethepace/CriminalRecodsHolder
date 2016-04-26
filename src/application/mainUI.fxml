@@ -7,7 +7,8 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+
    <children>
       <TabPane layoutX="7.0" layoutY="114.0" prefHeight="486.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="114.0">
         <tabs>
@@ -41,16 +42,16 @@
                               </VBox>
                               <VBox prefHeight="453.0" prefWidth="286.0" spacing="20.0">
                                  <children>
-                                    <DatePicker promptText="Date of crime">
+                                    <DatePicker fx:id="date_report" promptText="Date of crime">
                                        <VBox.margin>
                                           <Insets top="26.0" />
                                        </VBox.margin>
                                     </DatePicker>
-                                    <TextField cacheHint="QUALITY" promptText="Okhla, Nehru Place, etc" />
-                                    <TextField promptText="Murder, Dacoity, Rape, rtc" />
-                                    <TextArea prefHeight="56.0" prefWidth="286.0" promptText="Full description" />
-                                    <TextArea prefHeight="54.0" prefWidth="286.0" promptText="(If applicable)" />
-                                    <TextArea prefHeight="55.0" prefWidth="286.0" promptText="(If applicable)" />
+                                    <TextField fx:id="location_report" cacheHint="QUALITY" promptText="Okhla, Nehru Place, etc" />
+                                    <TextField fx:id="category_report" promptText="Murder, Dacoity, Rape, rtc" />
+                                    <TextArea fx:id="crime_description_report" prefHeight="56.0" prefWidth="286.0" promptText="Full description" />
+                                    <TextArea fx:id="suspect_description_report" prefHeight="54.0" prefWidth="286.0" promptText="(If applicable)" />
+                                    <TextArea fx:id="addn_information_report" prefHeight="55.0" prefWidth="286.0" promptText="(If applicable)" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="35.0" />
@@ -58,8 +59,8 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <Button defaultButton="true" layoutX="384.0" layoutY="427.0" mnemonicParsing="false" text="Submit Crime" />
-                        <Button cancelButton="true" layoutX="505.0" layoutY="427.0" mnemonicParsing="false" text="Cancel" />
+                        <Button fx:id="submit_crime_button" defaultButton="true" layoutX="384.0" layoutY="427.0" mnemonicParsing="false" text="Submit Crime" />
+                        <Button fx:id="cancel_crime_button" cancelButton="true" layoutX="505.0" layoutY="427.0" mnemonicParsing="false" text="Cancel" />
                      </children>
                   </AnchorPane>
             </content>
@@ -69,9 +70,9 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Label layoutX="20.0" layoutY="14.0" text="Add a new Criminals" />
-                        <ScrollPane layoutY="34.0" prefHeight="200.0" prefWidth="800.0">
+                        <ScrollPane layoutY="34.0" prefHeight="181.0" prefWidth="800.0">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="241.0" prefWidth="781.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="328.0" prefWidth="781.0">
                                  <children>
                                     <HBox layoutX="210.0" layoutY="54.0" prefHeight="201.0" prefWidth="781.0" AnchorPane.bottomAnchor="168.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
@@ -82,6 +83,7 @@
                                              <children>
                                                 <Label text="Name" />
                                                 <Label text="Crime ID" />
+                                                <Label text="Officer in Charge" />
                                                 <Label text="Police Department" />
                                                 <Label text="Status" />
                                                 <Label />
@@ -92,15 +94,16 @@
                                                 <Insets left="30.0" top="27.0" />
                                              </padding>
                                              <children>
-                                                <TextField />
-                                                <TextField />
-                                                <TextField />
-                                                <ComboBox prefWidth="150.0" />
+                                                <TextField fx:id="name_new_criminal" promptText="Name " />
+                                                <TextField fx:id="crimeId_new_criminal" promptText="Crime ID" />
+                                                <TextField fx:id="offr_new_criminal" promptText="Incharge" />
+                                                <TextField fx:id="department_new_criminal1" promptText="Police Dept" />
+                                                <ComboBox fx:id="status_new_criminal" prefWidth="150.0" />
                                              </children>
                                           </VBox>
                                        </children>
                                     </HBox>
-                                    <Button layoutX="314.0" layoutY="215.0" mnemonicParsing="false" text="Add Criminal" />
+                                    <Button fx:id="add_criminal_button" defaultButton="true" layoutX="327.0" layoutY="288.0" mnemonicParsing="false" text="Add Criminal" textAlignment="CENTER" />
                                  </children></AnchorPane>
                           </content>
                         </ScrollPane>
@@ -108,11 +111,79 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Query Crimes">
+            <Tab text="Query">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="20.0" layoutY="14.0" text="Add a new Criminals" />
+                        <ScrollPane layoutX="-7.0" layoutY="14.0" prefHeight="453.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="465.0" prefWidth="794.0">
+                                 <children>
+                                    <VBox prefHeight="453.0" prefWidth="800.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="418.0" spacing="30.0">
+                                             <children>
+                                                <RadioButton fx:id="area_query" mnemonicParsing="false" text="Area" />
+                                                <ComboBox fx:id="area_cb_query" disable="true" prefWidth="150.0" promptText="Select area">
+                                                   <HBox.margin>
+                                                      <Insets left="45.0" />
+                                                   </HBox.margin>
+                                                </ComboBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets left="30.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="418.0" spacing="30.0">
+                                             <children>
+                                                <RadioButton fx:id="crime_type_query" mnemonicParsing="false" text="Crime Type" />
+                                                <ComboBox fx:id="crime_type_cb_query" disable="true" prefWidth="150.0" promptText="Select crime" />
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets left="30.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="418.0" spacing="30.0">
+                                             <children>
+                                                <RadioButton fx:id="criminal_query" mnemonicParsing="false" text="Criminal" />
+                                                <ComboBox fx:id="criminal_cb_query" disable="true" prefWidth="150.0" promptText="Select criminal">
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </HBox.margin>
+                                                </ComboBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets left="30.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="418.0" spacing="30.0">
+                                             <children>
+                                                <RadioButton fx:id="status_query" mnemonicParsing="false" text="Criminal Status">
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </RadioButton>
+                                                <ComboBox fx:id="status_cb_query" disable="true" prefWidth="150.0" promptText="Select criminal">
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </HBox.margin>
+                                                </ComboBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets left="30.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <Button fx:id="submit_query" mnemonicParsing="false" text="Show Results">
+                                             <VBox.margin>
+                                                <Insets left="400.0" />
+                                             </VBox.margin>
+                                          </Button>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </ScrollPane>
                      </children>
                   </AnchorPane>
                </content>
