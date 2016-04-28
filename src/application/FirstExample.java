@@ -28,8 +28,8 @@ public class FirstExample {
     String sql;
     sql = "SELECT * from Employees";
     ResultSet rs = stmt.executeQuery(sql);
-    
-
+    PreparedStatement pstmt = conn.prepareStatement(sql);
+    System.out.println("Prepared statement: "+ pstmt);
     //STEP 5: Extract data from result set
     while(rs.next()){
 
