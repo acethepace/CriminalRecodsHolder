@@ -10,7 +10,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
 
    <children>
-      <TabPane layoutX="7.0" layoutY="114.0" prefHeight="486.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="114.0">
+      <TabPane fx:id="tabs" layoutX="7.0" layoutY="114.0" prefHeight="486.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="114.0">
         <tabs>
           <Tab text="Report a Crime">
             <content>
@@ -26,6 +26,7 @@
                                        </VBox.margin>
                                     </Label>
                                     <Label text="Location of Crime" textAlignment="RIGHT" />
+                                    <Label layoutX="212.0" layoutY="87.0" text="ZIP code" textAlignment="RIGHT" />
                                     <Label text="Crime Category" textAlignment="RIGHT" />
                                     <Label text="Description of Crime" textAlignment="RIGHT" />
                                     <Label text="Description of Suspect" textAlignment="RIGHT">
@@ -47,7 +48,8 @@
                                           <Insets top="26.0" />
                                        </VBox.margin>
                                     </DatePicker>
-                                    <TextField fx:id="location_report" cacheHint="QUALITY" promptText="Okhla, Nehru Place, etc" />
+                                    <TextField fx:id="location_report" cacheHint="QUALITY" prefHeight="1.0" prefWidth="147.0" promptText="Okhla, Nehru Place, etc" />
+                                    <TextField fx:id="ZIP" cacheHint="QUALITY" layoutX="10.0" layoutY="81.0" prefHeight="1.0" prefWidth="147.0" />
                                     <TextField fx:id="category_report" promptText="Murder, Dacoity, Rape, rtc" />
                                     <TextArea fx:id="crime_description_report" prefHeight="56.0" prefWidth="286.0" promptText="Full description" />
                                     <TextArea fx:id="suspect_description_report" prefHeight="54.0" prefWidth="286.0" promptText="(If applicable)" />
@@ -71,21 +73,20 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Label layoutX="20.0" layoutY="14.0" text="Add a new Criminals" />
-                        <ScrollPane layoutY="34.0" prefHeight="331.0" prefWidth="800.0">
+                        <ScrollPane layoutY="34.0" prefHeight="389.0" prefWidth="800.0">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="328.0" prefWidth="781.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="351.0" prefWidth="781.0">
                                  <children>
                                     <HBox layoutX="210.0" layoutY="54.0" prefHeight="201.0" prefWidth="781.0" AnchorPane.bottomAnchor="168.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <VBox alignment="TOP_RIGHT" prefHeight="369.0" prefWidth="289.0" spacing="30.0">
+                                          <VBox alignment="TOP_RIGHT" prefHeight="306.0" prefWidth="288.0" spacing="30.0">
                                              <padding>
                                                 <Insets top="30.0" />
                                              </padding>
                                              <children>
                                                 <Label text="Name" />
                                                 <Label text="Crime ID" />
-                                                <Label text="Officer in Charge" />
-                                                <Label text="Police Department" />
+                                                <Label text="Officer in Charge ID" />
                                                 <Label text="Status" />
                                                 <Label />
                                              </children>
@@ -96,15 +97,15 @@
                                              </padding>
                                              <children>
                                                 <TextField fx:id="name_new_criminal" promptText="Name " />
-                                                <TextField fx:id="crimeId_new_criminal" promptText="Crime ID" />
-                                                <TextField fx:id="offr_new_criminal" promptText="Incharge" />
-                                                <TextField fx:id="department_new_criminal1" promptText="Police Dept" />
+                                                <ComboBox fx:id="crimeId_new_criminal1" prefWidth="150.0" />
+                                                <ComboBox fx:id="officer_cb_id" prefWidth="150.0" />
                                                 <ComboBox fx:id="status_new_criminal" prefWidth="150.0" />
                                              </children>
                                           </VBox>
                                        </children>
                                     </HBox>
-                                    <Button fx:id="add_criminal_button" defaultButton="true" layoutX="327.0" layoutY="288.0" mnemonicParsing="false" text="Add Criminal" textAlignment="CENTER" />
+                                    <Button fx:id="add_criminal_button" defaultButton="true" layoutX="325.0" layoutY="256.0" mnemonicParsing="false" text="Add Criminal" textAlignment="CENTER" />
+                               
                                     <Label fx:id="message_new_criminal" layoutX="155.0" layoutY="281.0" textFill="RED" />
                                  </children></AnchorPane>
                           </content>
@@ -175,6 +176,23 @@
                                                 <Insets left="30.0" />
                                              </VBox.margin>
                                           </HBox>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                                             <children>
+                                                <CheckBox fx:id="criminal_name" mnemonicParsing="false" text="Criminal Name" />
+                                                <CheckBox fx:id="crime_id" mnemonicParsing="false" text="Crime id" />
+                                                <CheckBox fx:id="policeman_details" mnemonicParsing="false" text="Officer In charge" />
+                                                <CheckBox fx:id="area" mnemonicParsing="false" text="Area" />
+                                                <CheckBox fx:id="criminal_status" mnemonicParsing="false" text="Criminal status" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                                             <children>
+                                                <CheckBox fx:id="addn_info" mnemonicParsing="false" text="Additional info" />
+                                                <CheckBox fx:id="susp_desc" mnemonicParsing="false" text="Suspect Description" />
+                                                <CheckBox fx:id="crime_desc" mnemonicParsing="false" text="Crime Description" />
+                                                <CheckBox fx:id="crime_type" mnemonicParsing="false" text="Crime Type" />
+                                             </children>
+                                          </HBox>
                                           <Button fx:id="submit_query" mnemonicParsing="false" text="Show Results">
                                              <VBox.margin>
                                                 <Insets left="400.0" />
@@ -192,14 +210,14 @@
             </Tab>
         </tabs>
       </TabPane>
-      <ImageView fitHeight="45.0" fitWidth="200.0" layoutX="20.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="75.0" fitWidth="117.0" layoutX="48.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Desktop/DBMS/iiitd-logo.jpg" />
+            <Image url="@../../../../../MyDownloads/iiitd.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="98.0" fitWidth="193.0" layoutX="382.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Desktop/DBMS/appicon.jpg" />
+            <Image url="@../../../../../MyDownloads/crime.net.jpg" />
          </image>
       </ImageView>
    </children>
